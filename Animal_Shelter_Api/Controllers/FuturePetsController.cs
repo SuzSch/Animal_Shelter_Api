@@ -17,7 +17,14 @@ namespace Animal_Shelter_Api.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get(string petType)
     {
-      List<FuturePet> futurePets = await _db.FuturePets.ToListAsync();
+      IQueryable<FuturePet> query = _db.FuturePets.AsQueryable();
+
+      if (!string.IsNullOrEmpty(petType))
+      {
+        query = query.Where(pet => (petType == "cat" && pet is Cat) || (petType == "dog" && pet is Dog));
+      }
+
+      List<FuturePet> futurePets = await query.ToListAsync();
       List<FuturePetDTO> futurePetDTOs = futurePets.Select(pet =>
       {
         if (pet is Cat cat)
@@ -51,8 +58,10 @@ namespace Animal_Shelter_Api.Controllers
           return null;
         }
       }).ToList();
+
       return futurePetDTOs;
     }
+
 
 
     [HttpGet("{id}")]
