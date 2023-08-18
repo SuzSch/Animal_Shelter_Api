@@ -21,9 +21,9 @@ namespace Animal_Shelter_Api.Models
         );
       builder.Entity<Dog>()
       .HasData(
-          new Dog { FuturePetId = 4, Name = "Bing", Age = 4, Breed = "Corgi", CoatColor = "Sable", DogSize = Size.Small },
-          new Dog { FuturePetId = 5, Name = "Mushroom", Age = 3, Breed = "Pug", CoatColor = "Brindle", DogSize = Size.Small },
-          new Dog { FuturePetId = 6, Name = "Felix", Age = 1, Breed = "Great Pyrenees", CoatColor = "Red", DogSize = Size.Large }
+          new Dog { FuturePetId = 4, Name = "Bing", Age = 4, Breed = "Corgi", CoatColor = "Sable", DogSize = "Small" },
+          new Dog { FuturePetId = 5, Name = "Mushroom", Age = 3, Breed = "Pug", CoatColor = "Brindle", DogSize = "Small" },
+          new Dog { FuturePetId = 6, Name = "Felix", Age = 1, Breed = "Great Pyrenees", CoatColor = "Red", DogSize = "Large" }
         );
 
     }

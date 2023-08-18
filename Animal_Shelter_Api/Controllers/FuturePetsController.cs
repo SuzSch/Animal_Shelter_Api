@@ -4,7 +4,7 @@ using Animal_Shelter_Api.Models;
 
 namespace Animal_Shelter_Api.Controllers
 {
-  [Route("api"[controller])]
+  [Route("api/[controller]")]
   [ApiController]
   public class FuturePetsController : ControllerBase
   {
@@ -21,7 +21,7 @@ namespace Animal_Shelter_Api.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<FuturePet>> GetFuturePets(int id)
+    public async Task<ActionResult<FuturePet>> GetFuturePet(int id)
     {
       FuturePet futurePet = await _db.FuturePets.FindAsync(id);
 
@@ -30,6 +30,14 @@ namespace Animal_Shelter_Api.Controllers
         return NotFound();
       }
       return futurePet;
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<FuturePet>> Post(FuturePet futurePet)
+    {
+      _db.FuturePets.Add(futurePet);
+      await _db.SaveChangesAsync();
+      return CreatedAtAction(nameof(GetFuturePet), new {id = futurePet.FuturePetId}, futurePet);
     }
   }
 }

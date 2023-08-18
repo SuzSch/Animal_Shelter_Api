@@ -16,12 +16,7 @@ namespace Animal_Shelter_Api.Models
   }
   public class Dog : FuturePet
   {
-    public Size DogSize { get; set; }
+    public string DogSize { get; set; }
   }
-  public enum Size
-  {
-    Small,
-    Medium,
-    Large
-  }
+
 }
