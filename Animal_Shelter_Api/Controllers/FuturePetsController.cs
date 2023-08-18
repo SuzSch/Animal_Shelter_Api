@@ -15,10 +15,10 @@ namespace Animal_Shelter_Api.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get()
+    public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get(string petType)
     {
-      var futurePets = await _db.FuturePets.ToListAsync();
-      var futurePetDTOs = futurePets.Select(pet =>
+      List<FuturePet> futurePets = await _db.FuturePets.ToListAsync();
+      List<FuturePetDTO> futurePetDTOs = futurePets.Select(pet =>
       {
         if (pet is Cat cat)
         {
@@ -134,7 +134,7 @@ namespace Animal_Shelter_Api.Controllers
       _db.FuturePets.Add(futurePet);
       await _db.SaveChangesAsync();
 
-      var responseDTO = new FuturePetDTO
+      FuturePetDTO responseDTO = new FuturePetDTO
       {
         FuturePetId = futurePet.FuturePetId,
         Name = futurePet.Name,
