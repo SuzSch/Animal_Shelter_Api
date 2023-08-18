@@ -147,5 +147,42 @@ namespace Animal_Shelter_Api.Controllers
       };
       return CreatedAtAction(nameof(GetFuturePet), new { id = responseDTO.FuturePetId }, responseDTO);
     }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutFuturePet(int id, [FromBody] FuturePetDTO updatedFuturePetDTO)
+    {
+      FuturePet existingFuturePet = await _db.FuturePets.FindAsync(id);
+
+      if (existingFuturePet == null)
+      {
+        return NotFound();
+      }
+
+      if (existingFuturePet is Cat existingCat && updatedFuturePetDTO.PetType == "Cat")
+      {
+        existingCat.Name = updatedFuturePetDTO.Name;
+        existingCat.Age = updatedFuturePetDTO.Age;
+        existingCat.Breed = updatedFuturePetDTO.Breed;
+        existingCat.CoatColor = updatedFuturePetDTO.CoatColor;
+        existingCat.FivPositive = updatedFuturePetDTO.FivPositive ?? false;
+
+        await _db.SaveChangesAsync();
+        return NoContent();
+      }
+      else if (existingFuturePet is Dog existingDog && updatedFuturePetDTO.PetType == "Dog")
+      {
+        existingDog.Name = updatedFuturePetDTO.Name;
+        existingDog.Age = updatedFuturePetDTO.Age;
+        existingDog.Breed = updatedFuturePetDTO.Breed;
+        existingDog.CoatColor = updatedFuturePetDTO.CoatColor;
+        existingDog.DogSize = updatedFuturePetDTO.DogSize;
+
+        await _db.SaveChangesAsync();
+        return NoContent();
+      }
+      else
+      {
+        return BadRequest("Invalid pet type or update data.");
+      }
+    }
   }
 }
