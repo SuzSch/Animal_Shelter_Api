@@ -100,11 +100,52 @@ namespace Animal_Shelter_Api.Controllers
       return futurePetDTO;
     }
     [HttpPost]
-    public async Task<ActionResult<FuturePet>> Post(FuturePet futurePet)
+    public async Task<ActionResult<FuturePetDTO>> Post([FromBody] FuturePetDTO futurePetDTO)
     {
+      FuturePet futurePet;
+
+      if (futurePetDTO.PetType == "Cat")
+      {
+        futurePet = new Cat
+        {
+          Name = futurePetDTO.Name,
+          Age = futurePetDTO.Age,
+          Breed = futurePetDTO.Breed,
+          CoatColor = futurePetDTO.CoatColor,
+          FivPositive = futurePetDTO.FivPositive ?? false
+        };
+      }
+      else if (futurePetDTO.PetType == "Dog")
+      {
+        futurePet = new Dog
+        {
+          Name = futurePetDTO.Name,
+          Age = futurePetDTO.Age,
+          Breed = futurePetDTO.Breed,
+          CoatColor = futurePetDTO.CoatColor,
+          DogSize = futurePetDTO.DogSize
+        };
+      }
+      else
+      {
+        return BadRequest("Invalid pet type.");
+      }
+
       _db.FuturePets.Add(futurePet);
       await _db.SaveChangesAsync();
-      return CreatedAtAction(nameof(GetFuturePet), new {id = futurePet.FuturePetId}, futurePet);
+
+      var responseDTO = new FuturePetDTO
+      {
+        FuturePetId = futurePet.FuturePetId,
+        Name = futurePet.Name,
+        Age = futurePet.Age,
+        Breed = futurePet.Breed,
+        CoatColor = futurePet.CoatColor,
+        FivPositive = (futurePet is Cat cat) ? cat.FivPositive : (bool?)null,
+        DogSize = (futurePet is Dog dog) ? dog.DogSize : null,
+        PetType = (futurePet is Cat) ? "Cat" : ((futurePet is Dog) ? "Dog" : null)
+      };
+      return CreatedAtAction(nameof(GetFuturePet), new { id = responseDTO.FuturePetId }, responseDTO);
     }
   }
 }
