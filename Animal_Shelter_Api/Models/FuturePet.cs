@@ -13,10 +13,12 @@ namespace Animal_Shelter_Api.Models
   public class Cat : FuturePet
   {
     public bool FivPositive { get; set; }
+    public string PetType => "Cat";
   }
   public class Dog : FuturePet
   {
     public string DogSize { get; set; }
+    public string PetType => "Dog";
   }
 
 }
