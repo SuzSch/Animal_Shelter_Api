@@ -15,9 +15,9 @@ namespace Animal_Shelter_Api.Models
     {
       builder.Entity<Cat>()
         .HasData(
-          new Cat { FuturePetId = 1, Name = "Coco", Age = 1, Breed = "Siamese", Color = "White", FivPositive = false },
-          new Cat { FuturePetId = 2, Name = "Tuffy", Age = 3, Breed = "Ragamuffin", Color = "Chestnut", FivPositive = true },
-          new Cat { FuturePetId = 3, Name = "Fernando", Age = 3, Breed = "Maine Coon", Color = "Grey", FivPositive = false }
+          new Cat { FuturePetId = 1, Name = "Coco", Age = 1, Breed = "Siamese", CoatColor = "White", FivPositive = false },
+          new Cat { FuturePetId = 2, Name = "Tuffy", Age = 3, Breed = "Ragamuffin", CoatColor = "Chestnut", FivPositive = true },
+          new Cat { FuturePetId = 3, Name = "Fernando", Age = 3, Breed = "Maine Coon", CoatColor = "Grey", FivPositive = false }
         );
       builder.Entity<Dog>()
       .HasData(
