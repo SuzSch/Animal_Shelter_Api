@@ -15,13 +15,17 @@ namespace Animal_Shelter_Api.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get(string petType)
+    public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get(string petType, int minAge )
     {
       IQueryable<FuturePet> query = _db.FuturePets.AsQueryable();
 
       if (!string.IsNullOrEmpty(petType))
       {
         query = query.Where(pet => (petType == "cat" && pet is Cat) || (petType == "dog" && pet is Dog));
+      }
+      if (minAge > 0)
+      {
+        query = query.Where(entry => entry.Age >= minAge);
       }
 
       List<FuturePet> futurePets = await query.ToListAsync();

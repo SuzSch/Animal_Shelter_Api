@@ -54,6 +54,15 @@ Retrieve a list of future pets in the shelter.
 **Query Parameter:**
 - `petType` (optional): Filter future pets by pet type. Possible values are "cat" and "dog".
 
+```http://localhost:5000/api/futurepets?pettype=cat```
+```http://localhost:5000/api/futurepets?pettype=dog```
+
+- `minAge` (optional): Filter future pets by minimum age.
+
+```http://localhost:5000/api/futurepets?minage=5```
+
+
+
 **Response:**
 - Status: 200 OK
 - Body: List of future pets in the response format.
@@ -135,3 +144,8 @@ Delete a future pet from the animal shelter.
 * Body: An internal server error occurred. Contact the administrator for assistance.
 
 ## Further Exploration
+
+I decided to try adding CORS to my API. CORS stands for Cross-Origin Resource Sharing and it's used to allow requests from specific origins(domains). Here's a step by step of my process.
+
+1. I installed the Microsoft.AspNetCore.Cors package.
+2. I added 
