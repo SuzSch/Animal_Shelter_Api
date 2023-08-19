@@ -12,7 +12,6 @@
 - **Swagger**
 - **Microsoft.AspNetCore.Mvc**
 - **C#** 
-- **LINQ**
 - **Git**
 - **Postman**
 
