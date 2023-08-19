@@ -195,13 +195,10 @@ None.
 
 # Further Exploration
 
-<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXlpbXZoYjNrd3ltZWl0bWtzNWF5MXljMjV6ejhzdm8xNjhneTdrZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/URoLoCo1s9jm8/200.gif" width="20%" height="20%" />  
-<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXlpbXZoYjNrd3ltZWl0bWtzNWF5MXljMjV6ejhzdm8xNjhneTdrZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/URoLoCo1s9jm8/200.gif" width="20%" height="20%" />
-<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXlpbXZoYjNrd3ltZWl0bWtzNWF5MXljMjV6ejhzdm8xNjhneTdrZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/URoLoCo1s9jm8/200.gif" width="20%" height="20%" />
-<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXlpbXZoYjNrd3ltZWl0bWtzNWF5MXljMjV6ejhzdm8xNjhneTdrZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/URoLoCo1s9jm8/200.gif" width="20%" height="20%" />
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXlpbXZoYjNrd3ltZWl0bWtzNWF5MXljMjV6ejhzdm8xNjhneTdrZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/URoLoCo1s9jm8/200.gif" width="50%" height="50%" />  
 
  
-I decided to try adding CORS to my API. CORS stands for Cross-Origin Resource Sharing and it's used to allow requests from specific origins(domains). Here's a step by step of my process.
+### I decided to try adding CORS to my API. CORS stands for Cross-Origin Resource Sharing and it's used to allow requests from specific origins(domains). Here's a step by step of my process.
 
 1. I installed the Microsoft.AspNetCore.Cors package.
 ``````
