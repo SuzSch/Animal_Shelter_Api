@@ -148,4 +148,27 @@ Delete a future pet from the animal shelter.
 I decided to try adding CORS to my API. CORS stands for Cross-Origin Resource Sharing and it's used to allow requests from specific origins(domains). Here's a step by step of my process.
 
 1. I installed the Microsoft.AspNetCore.Cors package.
-2. I added 
+2. I added a CORS policy using the AddCors() method.
+``````
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+``````
+3. Added Use CORS middleware before mapping controllers
+
+``````
+app.UseCors();
+``````
+4. To test if CORS was working I used a testApp that I made earlier in the week following a tutorial for CORS and made a call to my API.
+5. Kept getting a ERR_SSL_PROTOCOL_ERROR and figured out I need to change the FetchRemote to http instead of https from the tutorial.
+6. All the data was returned to the test app index page since I have the policy set to allow any origin.
+7. 
+
+
+5. The policy is configured to allow any origin, any header, and any HTTP method. This is useful for development but might be overly permissive for production environments. You would adjust the CORS policy to match the application's security requirements after development.
