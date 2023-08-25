@@ -197,5 +197,22 @@ namespace Animal_Shelter_Api.Controllers
         return BadRequest("Invalid pet type or update data.");
       }
     }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteFuturePet(int id)
+    {
+      FuturePet futurePet = await _db.FuturePets.FindAsync(id);
+
+      if (futurePet == null)
+      {
+        return NotFound();
+      }
+
+      _db.FuturePets.Remove(futurePet);
+      await _db.SaveChangesAsync();
+
+      return NoContent();
+    }
+
+
   }
 }

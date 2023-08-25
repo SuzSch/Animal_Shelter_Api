@@ -30,9 +30,8 @@
   }
 }
 ``````
-8. create your initial migration and update the database.
+8. Update the database.
 ``````
-$ dotnet ef migrations add Initial
 $ dotnet ef database update
 ``````
 9. Type dotnet run watch in the terminal to launch Swagger to test and use the API.
