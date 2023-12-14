@@ -160,6 +160,7 @@ namespace Animal_Shelter_Api.Controllers
       };
       return CreatedAtAction(nameof(GetFuturePet), new { id = responseDTO.FuturePetId }, responseDTO);
     }
+    
     [HttpPut("{id}")]
     public async Task<IActionResult> PutFuturePet(int id, [FromBody] FuturePetDTO updatedFuturePetDTO)
     {
