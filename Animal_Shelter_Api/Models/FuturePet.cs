@@ -7,6 +7,7 @@ namespace Animal_Shelter_Api.Models
     public int Age { get; set; }
     public string Breed { get; set; }
     public string CoatColor { get; set; }
+    public IFormFile Image { get; set; }
 
   }
 
@@ -15,7 +16,7 @@ namespace Animal_Shelter_Api.Models
     public bool FivPositive { get; set; }
     public string PetType => "Cat";
   }
-  
+
   public class Dog : FuturePet
   {
     public string DogSize { get; set; }
@@ -31,5 +32,6 @@ namespace Animal_Shelter_Api.Models
     public bool? FivPositive { get; set; }
     public string DogSize { get; set; }
     public string PetType { get; set; }
+    public IFormFile Image { get; set; }
   }
 }

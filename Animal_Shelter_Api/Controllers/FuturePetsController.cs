@@ -15,7 +15,7 @@ namespace Animal_Shelter_Api.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get(string petType, int minAge )
+    public async Task<ActionResult<IEnumerable<FuturePetDTO>>> Get(string petType, int minAge)
     {
       IQueryable<FuturePet> query = _db.FuturePets.AsQueryable();
 
@@ -113,7 +113,7 @@ namespace Animal_Shelter_Api.Controllers
       return futurePetDTO;
     }
     [HttpPost]
-    public async Task<ActionResult<FuturePetDTO>> Post([FromBody] FuturePetDTO futurePetDTO)
+    public async Task<ActionResult<FuturePetDTO>> Post([FromForm] FuturePetDTO futurePetDTO)
     {
       FuturePet futurePet;
 
@@ -125,7 +125,8 @@ namespace Animal_Shelter_Api.Controllers
           Age = futurePetDTO.Age,
           Breed = futurePetDTO.Breed,
           CoatColor = futurePetDTO.CoatColor,
-          FivPositive = futurePetDTO.FivPositive ?? false
+          FivPositive = futurePetDTO.FivPositive ?? false,
+          Image = futurePetDTO.Image,
         };
       }
       else if (futurePetDTO.PetType == "Dog")
@@ -136,7 +137,8 @@ namespace Animal_Shelter_Api.Controllers
           Age = futurePetDTO.Age,
           Breed = futurePetDTO.Breed,
           CoatColor = futurePetDTO.CoatColor,
-          DogSize = futurePetDTO.DogSize
+          DogSize = futurePetDTO.DogSize,
+          Image = futurePetDTO.Image,
         };
       }
       else
@@ -154,13 +156,14 @@ namespace Animal_Shelter_Api.Controllers
         Age = futurePet.Age,
         Breed = futurePet.Breed,
         CoatColor = futurePet.CoatColor,
+        Image = futurePet.Image,
         FivPositive = (futurePet is Cat cat) ? cat.FivPositive : (bool?)null,
         DogSize = (futurePet is Dog dog) ? dog.DogSize : null,
         PetType = (futurePet is Cat) ? "Cat" : ((futurePet is Dog) ? "Dog" : null)
       };
       return CreatedAtAction(nameof(GetFuturePet), new { id = responseDTO.FuturePetId }, responseDTO);
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> PutFuturePet(int id, [FromBody] FuturePetDTO updatedFuturePetDTO)
     {
