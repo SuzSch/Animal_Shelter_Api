@@ -41,6 +41,7 @@ namespace Animal_Shelter_Api.Controllers
             Breed = cat.Breed,
             CoatColor = cat.CoatColor,
             FivPositive = cat.FivPositive,
+            Image = cat.Image,
             PetType = cat.PetType
           };
         }
@@ -54,6 +55,7 @@ namespace Animal_Shelter_Api.Controllers
             Breed = dog.Breed,
             CoatColor = dog.CoatColor,
             DogSize = dog.DogSize,
+            Image = dog.Image,
             PetType = dog.PetType
           };
         }
@@ -89,6 +91,7 @@ namespace Animal_Shelter_Api.Controllers
           Age = cat.Age,
           Breed = cat.Breed,
           CoatColor = cat.CoatColor,
+          Image = cat.Image,
           FivPositive = cat.FivPositive,
           PetType = cat.PetType
         };
@@ -102,6 +105,7 @@ namespace Animal_Shelter_Api.Controllers
           Age = dog.Age,
           Breed = dog.Breed,
           CoatColor = dog.CoatColor,
+          Image = dog.Image,
           DogSize = dog.DogSize,
           PetType = dog.PetType
         };
@@ -113,7 +117,7 @@ namespace Animal_Shelter_Api.Controllers
       return futurePetDTO;
     }
     [HttpPost]
-    public async Task<ActionResult<FuturePetDTO>> Post([FromForm] FuturePetDTO futurePetDTO)
+    public async Task<ActionResult<FuturePetDTO>> Post([FromBody] FuturePetDTO futurePetDTO)
     {
       FuturePet futurePet;
 
@@ -180,6 +184,7 @@ namespace Animal_Shelter_Api.Controllers
         existingCat.Age = updatedFuturePetDTO.Age;
         existingCat.Breed = updatedFuturePetDTO.Breed;
         existingCat.CoatColor = updatedFuturePetDTO.CoatColor;
+        existingCat.Image = updatedFuturePetDTO.Image;
         existingCat.FivPositive = updatedFuturePetDTO.FivPositive ?? false;
 
         await _db.SaveChangesAsync();
@@ -191,6 +196,7 @@ namespace Animal_Shelter_Api.Controllers
         existingDog.Age = updatedFuturePetDTO.Age;
         existingDog.Breed = updatedFuturePetDTO.Breed;
         existingDog.CoatColor = updatedFuturePetDTO.CoatColor;
+        existingDog.Image = updatedFuturePetDTO.Image;
         existingDog.DogSize = updatedFuturePetDTO.DogSize;
 
         await _db.SaveChangesAsync();
