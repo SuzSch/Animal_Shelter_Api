@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Animal_Shelter_Api.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Animal_Shelter_Api.Controllers
 {
