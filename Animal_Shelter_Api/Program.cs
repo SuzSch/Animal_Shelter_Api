@@ -1,8 +1,5 @@
 using Animal_Shelter_Api.Models;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,10 +29,6 @@ builder.Services.AddCors(options =>
   });
 });
 
-builder.Services.AddMvc(options => 
-{
-  options.ModelBinderProviders.Insert(0, new InFormFileBinderProvider());
-}).AddNewtonsoftJason();
 
 var app = builder.Build();
 
@@ -56,14 +49,3 @@ app.UseCors();
 app.MapControllers();
 
 app.Run();
-
-public class InFormFileBinderProvider : IModelBinderProvider
-{
-  public IModelBinder? GetBinder(ModelBinderProviderContext context)
-  {
-    if (context.Metadata.ModelType == typeof(IFormFile))
-    {
-      return new BinderTypeModelBinder(typeof(InFormFileModelBinder))
-;    }
-  }
-}
