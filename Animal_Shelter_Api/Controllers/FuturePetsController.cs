@@ -69,8 +69,6 @@ namespace Animal_Shelter_Api.Controllers
       return futurePetDTOs;
     }
 
-
-
     [HttpGet("{id}")]
     public async Task<ActionResult<FuturePetDTO>> GetFuturePet(int id)
     {
@@ -118,7 +116,7 @@ namespace Animal_Shelter_Api.Controllers
       return futurePetDTO;
     }
     [HttpPost]
-    public async Task<ActionResult<FuturePetDTO>> Post([FromBody] FuturePetDTO futurePetDTO)
+    public async Task<ActionResult<FuturePetDTO>> Post([FromForm] FuturePetDTO futurePetDTO)
     {
       FuturePet futurePet;
 
@@ -170,7 +168,7 @@ namespace Animal_Shelter_Api.Controllers
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutFuturePet(int id, [FromBody] FuturePetDTO updatedFuturePetDTO)
+    public async Task<IActionResult> PutFuturePet(int id, [FromForm] FuturePetDTO updatedFuturePetDTO)
     {
       FuturePet existingFuturePet = await _db.FuturePets.FindAsync(id);
 
