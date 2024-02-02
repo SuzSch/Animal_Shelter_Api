@@ -42,7 +42,6 @@ namespace Animal_Shelter_Api.Controllers
             Breed = cat.Breed,
             CoatColor = cat.CoatColor,
             FivPositive = cat.FivPositive,
-            Image = cat.Image,
             PetType = cat.PetType
           };
         }
@@ -56,7 +55,6 @@ namespace Animal_Shelter_Api.Controllers
             Breed = dog.Breed,
             CoatColor = dog.CoatColor,
             DogSize = dog.DogSize,
-            Image = dog.Image,
             PetType = dog.PetType
           };
         }
@@ -90,7 +88,6 @@ namespace Animal_Shelter_Api.Controllers
           Age = cat.Age,
           Breed = cat.Breed,
           CoatColor = cat.CoatColor,
-          Image = cat.Image,
           FivPositive = cat.FivPositive,
           PetType = cat.PetType
         };
@@ -104,7 +101,6 @@ namespace Animal_Shelter_Api.Controllers
           Age = dog.Age,
           Breed = dog.Breed,
           CoatColor = dog.CoatColor,
-          Image = dog.Image,
           DogSize = dog.DogSize,
           PetType = dog.PetType
         };
@@ -129,7 +125,6 @@ namespace Animal_Shelter_Api.Controllers
           Breed = futurePetDTO.Breed,
           CoatColor = futurePetDTO.CoatColor,
           FivPositive = futurePetDTO.FivPositive ?? false,
-          Image = futurePetDTO.Image,
         };
       }
       else if (futurePetDTO.PetType == "Dog")
@@ -141,7 +136,6 @@ namespace Animal_Shelter_Api.Controllers
           Breed = futurePetDTO.Breed,
           CoatColor = futurePetDTO.CoatColor,
           DogSize = futurePetDTO.DogSize,
-          Image = futurePetDTO.Image,
         };
       }
       else
@@ -159,7 +153,6 @@ namespace Animal_Shelter_Api.Controllers
         Age = futurePet.Age,
         Breed = futurePet.Breed,
         CoatColor = futurePet.CoatColor,
-        Image = futurePet.Image,
         FivPositive = (futurePet is Cat cat) ? cat.FivPositive : (bool?)null,
         DogSize = (futurePet is Dog dog) ? dog.DogSize : null,
         PetType = (futurePet is Cat) ? "Cat" : ((futurePet is Dog) ? "Dog" : null)
@@ -183,7 +176,6 @@ namespace Animal_Shelter_Api.Controllers
         existingCat.Age = updatedFuturePetDTO.Age;
         existingCat.Breed = updatedFuturePetDTO.Breed;
         existingCat.CoatColor = updatedFuturePetDTO.CoatColor;
-        existingCat.Image = updatedFuturePetDTO.Image;
         existingCat.FivPositive = updatedFuturePetDTO.FivPositive ?? false;
 
         await _db.SaveChangesAsync();
@@ -195,7 +187,6 @@ namespace Animal_Shelter_Api.Controllers
         existingDog.Age = updatedFuturePetDTO.Age;
         existingDog.Breed = updatedFuturePetDTO.Breed;
         existingDog.CoatColor = updatedFuturePetDTO.CoatColor;
-        existingDog.Image = updatedFuturePetDTO.Image;
         existingDog.DogSize = updatedFuturePetDTO.DogSize;
 
         await _db.SaveChangesAsync();
@@ -221,7 +212,5 @@ namespace Animal_Shelter_Api.Controllers
 
       return NoContent();
     }
-
-
   }
 }
